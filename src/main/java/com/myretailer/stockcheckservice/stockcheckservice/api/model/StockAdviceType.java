@@ -1,4 +1,7 @@
 package com.myretailer.stockcheckservice.stockcheckservice.api.model;
 
-public class StockAdviceType {
+public enum StockAdviceType {
+    REORDER,
+    ONE_OFF_ORDER,
+    DO_NOT_REORDER
 }

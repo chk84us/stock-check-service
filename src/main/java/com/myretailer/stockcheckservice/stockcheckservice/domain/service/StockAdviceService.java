@@ -1,6 +1,8 @@
 package com.myretailer.stockcheckservice.stockcheckservice.domain.service;
 
-public interface StockAuditAdviceService {
+import com.myretailer.stockcheckservice.stockcheckservice.api.model.request.StockAdviceRequest;
 
-    void creatAdvice();
+public interface StockAdviceService {
+
+    void createAdvice(StockAdviceRequest request);
 }
