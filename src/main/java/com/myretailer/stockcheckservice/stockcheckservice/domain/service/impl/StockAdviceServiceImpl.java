@@ -1,5 +1,6 @@
 package com.myretailer.stockcheckservice.stockcheckservice.domain.service.impl;
 
+import com.myretailer.stockcheckservice.stockcheckservice.api.model.StockAdviceType;
 import com.myretailer.stockcheckservice.stockcheckservice.api.model.request.StockAdviceRequest;
 import com.myretailer.stockcheckservice.stockcheckservice.domain.model.StockAdviceDao;
 import com.myretailer.stockcheckservice.stockcheckservice.domain.repo.StockAdviceRepository;
@@ -20,5 +21,10 @@ public class StockAdviceServiceImpl implements StockAdviceService {
         StockAdviceDao stockAdviceDao = new StockAdviceDao();
         stockAdviceDao.setAdviceType(request.getAdviceType());
         repository.save(stockAdviceDao);
+    }
+
+    @Override
+    public StockAdviceDao getAdvice(StockAdviceType adviceType) {
+        return repository.findByAdviceType(adviceType);
     }
 }
