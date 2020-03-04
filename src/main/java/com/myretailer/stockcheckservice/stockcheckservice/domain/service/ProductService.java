@@ -3,7 +3,8 @@ package com.myretailer.stockcheckservice.stockcheckservice.domain.service;
 import com.myretailer.stockcheckservice.stockcheckservice.api.model.request.ProductRequest;
 import com.myretailer.stockcheckservice.stockcheckservice.api.model.response.ProductResponse;
 import com.myretailer.stockcheckservice.stockcheckservice.domain.mapper.ProductMapper;
-import com.myretailer.stockcheckservice.stockcheckservice.domain.model.ProductDAO;
+import com.myretailer.stockcheckservice.stockcheckservice.domain.model.InventoryDao;
+import com.myretailer.stockcheckservice.stockcheckservice.domain.model.ProductDao;
 import com.myretailer.stockcheckservice.stockcheckservice.domain.repo.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class ProductService {
     }
 
     public ProductResponse getProduct(Long id) {
-        Optional<ProductDAO> productOptional = repository.findById(id);
+        Optional<ProductDao> productOptional = repository.findById(id);
         if (!productOptional.isPresent()) {
             throw new RuntimeException("not found");
         }
@@ -29,7 +30,16 @@ public class ProductService {
     }
 
     public ProductResponse createProduct(ProductRequest request) {
-        ProductDAO productDAO = repository.save(mapper.map(request));
+        ProductDao productDAO = repository.save(mapper.map(request));
+        repository.save(updateInventory(productDAO));
         return mapper.map(productDAO);
+    }
+
+    private ProductDao updateInventory(ProductDao productDao) {
+        InventoryDao inventoryDao = new InventoryDao();
+        inventoryDao.setId(productDao.getId());
+        inventoryDao.setProduct(productDao);
+        productDao.setInventory(inventoryDao);
+        return productDao;
     }
 }

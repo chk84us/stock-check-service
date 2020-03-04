@@ -1,12 +1,9 @@
 package com.myretailer.stockcheckservice.stockcheckservice.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "product")
-public class ProductDAO {
+public class ProductDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,6 +12,9 @@ public class ProductDAO {
     private String name;
 
     private double unitPrice;
+
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
+    private InventoryDao inventory;
 
     public long getId() {
         return id;
@@ -38,5 +38,13 @@ public class ProductDAO {
 
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public InventoryDao getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryDao inventory) {
+        this.inventory = inventory;
     }
 }

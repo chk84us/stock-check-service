@@ -1,4 +1,10 @@
 package com.myretailer.stockcheckservice.stockcheckservice.exception;
 
-public class StockCheckServiceException {
+public class StockCheckServiceException extends RuntimeException {
+
+    public StockCheckServiceException(String message) {
+        super(message);
+    }
+
+
 }
