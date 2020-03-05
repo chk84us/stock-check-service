@@ -60,7 +60,7 @@ public class InventoryServiceImpl implements InventoryService {
         Optional<InventoryDao> inventoryOptional = repository.findById(request.getProductId());
         if (!inventoryOptional.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    MessageFormat.format("No inventory found for product with id {}", request.getProductId()));
+                    MessageFormat.format("No inventory found for product with id {0}", request.getProductId()));
         }
     }
 }

@@ -1,0 +1,31 @@
+= Stock-Check Service Documentation
+
+== Introduction
+
+This document explains how to use REST API calls to create a product, update it's inventory and perform a stock audit
+
+Product and inventory need to be updated before perming a stock audit.
+
+== Create a Product
+
+.request
+include::../../../target/snippets/product/http-request.adoc[]
+
+.response
+include::../../../target/snippets/product/http-response.adoc[]
+
+== Update Inventory
+
+.request
+include::../../../target/snippets/inventory/http-request.adoc[]
+
+.response
+include::../../../target/snippets/inventory/http-response.adoc[]
+
+== Do a Stock Audit
+
+.request
+include::../../../target/snippets/stock-audit/http-request.adoc[]
+
+.response
+include::../../../target/snippets/stock-audit/http-response.adoc[]
