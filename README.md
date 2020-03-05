@@ -1,4 +1,5 @@
-# This is a simple REST service to create products, update inventory and perform stock check based on a given set of rule
+# Stock Check Services
+This is a simple REST service to create products, update inventory and perform stock check based on a given set of rule
 
 # Getting Started
 
